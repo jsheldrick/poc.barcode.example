@@ -1,1 +1,9 @@
-/target
+.project
+.classpath
+.settings
+target
+*org.eclipse*
+.externalToolBuilders
+/bin
+.metadata
+gccrypto.properties
