@@ -1,12 +1,12 @@
 package com.barcode.example.service;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.util.Map;
 
 import com.itextpdf.text.Document;
 import com.itextpdf.text.DocumentException;
-import com.itextpdf.text.Paragraph;
 import com.itextpdf.text.Rectangle;
 import com.itextpdf.text.pdf.BarcodeInter25;
 import com.itextpdf.text.pdf.PdfContentByte;
@@ -16,6 +16,7 @@ public class BarCodePrintServiceImpl implements BarCodePrintService {
 	
 	private Document document;
     private static final String BARCODE_FILENAME = "barcode.pdf";
+    private static final String DIRECTORY = "src/main/resources";
 	
 	public String generateBarCode(Map<String, String> barCodeValues) {
 		// TODO Auto-generated method stub
@@ -34,8 +35,8 @@ public class BarCodePrintServiceImpl implements BarCodePrintService {
 		// TODO Auto-generated method stub
 	 
 		// step 1
-        //this.document = new Document(new Rectangle(340, 842));
-        this.document = new Document(new Rectangle(100, 100));
+        this.document = new Document(new Rectangle(340, 842));
+        //this.document = new Document(new Rectangle(100, 100));
 
         // step 2
         PdfWriter pdfWriter = null;
@@ -70,7 +71,7 @@ public class BarCodePrintServiceImpl implements BarCodePrintService {
 	}
 
 	private PdfWriter getPdfWriter() throws FileNotFoundException, DocumentException{
-        return PdfWriter.getInstance(document, new FileOutputStream(BARCODE_FILENAME));
+        return PdfWriter.getInstance(document, new FileOutputStream(DIRECTORY + File.separator + BARCODE_FILENAME));
 	}
 	
 	private PdfContentByte getPdfContentByte(PdfWriter pdfWriter){
